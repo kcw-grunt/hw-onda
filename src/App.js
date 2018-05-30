@@ -26,8 +26,7 @@ class App extends Component {
   receiveWorldHandler = (event) => {
  
   }
-
-
+ 
   getClientIP = (req, res, next) => {
     try {
         var IPs = req.headers['x-forwarded-for'] ||
@@ -71,7 +70,7 @@ class App extends Component {
           <h1>Onda Hello World</h1>
         </titleText>
       </baseText>
-        <button style ={{color: 'green',float: 'none', height: 30, margin: 10}} 
+        <button style ={{color: 'blue',float: 'none', height: 30, margin: 10}} 
           className='button'
           onClick={this.sendHelloHandler}>SEND HELLO</button>
       <view>
