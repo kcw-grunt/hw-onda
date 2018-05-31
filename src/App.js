@@ -11,6 +11,25 @@ class App extends Component {
     this.sendHelloHandler = this.sendHelloHandler.bind(this);
   }
 
+  state = {
+    response: ''
+  };
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+
+    if (response.status !== 200) throw Error(body.message);
+
+    return body;
+  }
+
   sendHelloHandler = (event) => {
     fetch('http://172.16.10.40/sendhello')
     .then((result) => {
@@ -65,17 +84,16 @@ class App extends Component {
     return (
       <div className="App"> 
      <style>{'body { background-color: black; }'}</style>
-     <baseText style={{fontWeight:'bold',  float: 'none', margin: 10 }}>
-        <titleText style={{color: 'green'}}>
-          <h1>Onda Hello World</h1>
-        </titleText>
-      </baseText>
-        <button style ={{color: 'blue',float: 'none', height: 30, margin: 10}} 
-          className='button'
-          onClick={this.sendHelloHandler}>SEND HELLO</button>
-      <view>
+     <baseText style={{fontWeight:'bold', color: 'blue',  float: 'none', margin: 10 }}>
+         <h1>Onda Hello World</h1>
+    </baseText>
+    <button  className='button' style ={{color: 'black', height: 30, margin: 0}} onClick={this.sendHelloHandler}>SEND HELLO</button>
+      <div>
+      <view style={{color: 'white', margin: 20}}>
         <text>Hello World!</text>
       </view>
+      </div>
+      
       </div>
     );
   }
