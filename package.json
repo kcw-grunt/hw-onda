@@ -29,6 +29,7 @@
      "build": "./node_modules/react-scripts/bin/react-scripts.js build",
      "test": "./node_modules/react-scripts/bin/react-scripts.js test --env=jsdom",
      "eject": "./node_modules/react-scripts/bin/react-scripts.js eject",
-     "server": "cd client/api && pm2 start server.js --watch"
+     "server": "cd client/api && pm2 start server.js --watch",
+     "ondastart": "npm start && /usr/bin/chromium-browser --window-size=800,480 -kiosk --window-position=0,0 && http://localhost:3000 &" 
   }
 }
