@@ -11,20 +11,22 @@ unclutter &
 sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' /home/zuluadmin/.config/chromium/Default/Preferences
 sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/zuluadmin/.config/chromium/Default/Preferences
  
-# Run Chromium and open tabs
- /usr/bin/chromium-browser --window-size=800,480 -kiosk --window-position=0,0 http://localhost:3000 &
-
 cd ~/hw-onda
 npm run dev
-processNum="0"
-while [ $processNum = 0 ]
-do
-processNum=$(ps aux | grep "node /home" | wc -l)
-echo $processNum
-if (($processNum > "0")); then
- echo "Execute"
- xdotool ket ctrl+r
-fi
+sleep 10
+# Run Chromium and open tabs
+ /usr/bin/chromium-browser --window-size=800,480 -kiosk --window-position=0,0 http://localhost:3000 &
+sleep 10
+xdotool key ctrl+r
+#processNum="0"
+#while [ $processNum = 0 ]
+#do
+#processNum=$(ps aux | grep "node /home" | wc -l)
+#echo $processNum
+#if (($processNum > "0")); then
+# echo "Execute"
+
+#fi
 
 #/usr/bin/chromium-browser --window-size=800,480 --kiosk --window-position=0,0 http://localhost:3000 &
 
