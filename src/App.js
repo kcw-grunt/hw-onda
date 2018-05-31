@@ -1,15 +1,12 @@
 import React, {Component} from 'react'; 
 import './App.css'; 
-import SendHello from './SendHello/SendHello'
-import ReceiveWorld from './ReceiveWorld/ReceiveWorld'
-
 
 class App extends Component {
  
-  constructor(){
-    super()
-    this.sendHelloHandler = this.sendHelloHandler.bind(this);
-  }
+  // constructor(){
+  //   super()
+  //   this.sendHelloHandler = this.sendHelloHandler.bind(this);
+  // }
 
   state = {
     response: ''
@@ -30,72 +27,50 @@ class App extends Component {
     return body;
   }
 
-  sendHelloHandler = (ipadd, event) => {
-    fetch('http://172.16.10.40:3001/api/hello', {mode: 'no-cors'})
-    .then((result) => {
-      // Get the result
-      // If we want text, call result.text()
-      return result.text();
+  // sendHelloHandler = (ipadd, event) => {
+  //   fetch('http://172.16.10.40:3001/api/hello', {mode: 'no-cors'})
+  //   .then((result) => {
+  //     // Get the result
+  //     // If we want text, call result.text()
+  //     return result.text();
 
-    }).then((jsonResult) => {
-      // Do something with the result
-      console.log(jsonResult);
-    })
-  }
+  //   }).then((jsonResult) => {
+  //     // Do something with the result
+  //     console.log(jsonResult);
+  //   })
+  // }
 
-  receiveWorldHandler = (event) => {
+  // receiveWorldHandler = (event) => {
  
-  }
+  // }
  
-  getClientIP = (req, res, next) => {
-    try {
-        var IPs = req.headers['x-forwarded-for'] ||
-            req.connection.remoteAddress ||
-            req.socket.remoteAddress ||
-            req.connection.socket.remoteAddress;
+  // getClientIP = (req, res, next) => {
+  //   try {
+  //       var IPs = req.headers['x-forwarded-for'] ||
+  //           req.connection.remoteAddress ||
+  //           req.socket.remoteAddress ||
+  //           req.connection.socket.remoteAddress;
 
-        if (IPs.indexOf(":") !== -1) {
-            IPs = IPs.split(":")[IPs.split(":").length - 1]
-        }
+  //       if (IPs.indexOf(":") !== -1) {
+  //           IPs = IPs.split(":")[IPs.split(":").length - 1]
+  //       }
 
-        return res.json({ IP: IPs.split(",")[0] });
-    } catch (err) {
-        return res.json({ message: 'got error' });
-    }
-  }
+  //       return res.json({ IP: IPs.split(",")[0] });
+  //   } catch (err) {
+  //       return res.json({ message: 'got error' });
+  //   }
+  // }
 
   render() { 
-
-    const styles = {
-      baseText: {
-        fontFamily: 'Cochin',
-      },
-      titleText: {
-        fontSize: 50,
-        fontWeight: 'bold',
-      },
-      buttonStyle: {
-        backgroundColor: 'white',
-        font: 'inherit',
-        border: '1px solid white',
-        padding: '8px',
-      }
-    };
  
     return (
-      <div className="App"> 
-     <style>{'body { background-color: black; }'}</style>
-     <baseText style={{fontWeight:'bold', color: 'blue',  float: 'none', margin: 10 }}>
-         <h1>Onda Hello World</h1>
-    </baseText>
-    <button  className='button' style ={{color: 'black', height: 30, margin: 0}} onClick={this.sendHelloHandler}>SEND HELLO</button>
-      <div>
-      <view style={{color: 'white', margin: 20}}>
-        <p className="remoteResponse">{this.state.response}</p>
-      </view>
-      </div>
-      
-      </div>
+    <div className="App"> 
+    <style>{'body { background-color: black; }'}</style>
+    <p style={{fontWeight:'bold', color: 'green',  float: 'none', margin: 10 }}>
+          Onda Hello World </p> 
+    <button  className='button' style ={{color: 'black', height: 30, margin: 0}} onClick={this.callApi}>SEND HELLO</button>
+    <p className="remoteResponse">{this.state.response}</p>
+    </div>
     );
   }
 
