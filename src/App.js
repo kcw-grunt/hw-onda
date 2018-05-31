@@ -30,12 +30,13 @@ class App extends Component {
     return body;
   }
 
-  sendHelloHandler = (event) => {
-    fetch('http://172.16.10.40/sendhello')
+  sendHelloHandler = (ipadd, event) => {
+    fetch('http://172.16.10.40:3001/api/hello', {mode: 'no-cors'})
     .then((result) => {
       // Get the result
       // If we want text, call result.text()
       return result.text();
+
     }).then((jsonResult) => {
       // Do something with the result
       console.log(jsonResult);
@@ -90,7 +91,7 @@ class App extends Component {
     <button  className='button' style ={{color: 'black', height: 30, margin: 0}} onClick={this.sendHelloHandler}>SEND HELLO</button>
       <div>
       <view style={{color: 'white', margin: 20}}>
-        <text>Hello World!</text>
+        <p className="remoteResponse">{this.state.response}</p>
       </view>
       </div>
       
