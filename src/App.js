@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/api/hello', {mode:'no-cors'});
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
