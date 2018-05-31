@@ -15,7 +15,7 @@ sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' /home/zuluadmin/.config/c
  /usr/bin/chromium-browser --window-size=800,480 -kiosk --window-position=0,0 http://localhost:3000 &
 
 cd ~/hw-onda
-npm start
+npm run dev
 processNum="0"
 while [ $processNum = 0 ]
 do
