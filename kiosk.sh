@@ -17,16 +17,15 @@ sleep 10
 # Run Chromium and open tabs
  /usr/bin/chromium-browser --window-size=800,480 -kiosk --window-position=0,0 http://localhost:3000 &
 sleep 10
-xdotool key ctrl+r
-#processNum="0"
-#while [ $processNum = 0 ]
-#do
-#processNum=$(ps aux | grep "node /home" | wc -l)
-#echo $processNum
-#if (($processNum > "0")); then
-# echo "Execute"
-
-#fi
+processNum="0"
+while [ $processNum = 0 ]
+do
+processNum=$(ps aux | grep "node /home" | wc -l)
+echo $processNum
+if (($processNum > "0")); then
+ echo "Execute"
+ xdotool key ctrl+r
+fi
 
 #/usr/bin/chromium-browser --window-size=800,480 --kiosk --window-position=0,0 http://localhost:3000 &
 
