@@ -10,6 +10,4 @@ tnc.on('error', (err) => console.log('error' + err));
 app.get('/api/hello', (req, res) => {
   res.send({ response: 'World' });
 });
-
-
 app.listen(port, () => console.log(`Listening on port ${port}`));
